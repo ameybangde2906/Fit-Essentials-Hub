@@ -1,0 +1,67 @@
+<div class="main">
+    <p class="heading">Shop Bestsellers</p>
+    <div class="categories">
+        <a (click)="function('Weights and Barbells')"
+            [ngStyle]="{color: selectedTagIndex === 'Weights and Barbells' ? 'orange' : 'gray'}">Weights & Barbells</a>
+        <a (click)="function('Machines')"
+            [ngStyle]="{color: selectedTagIndex === 'Machines' ? 'orange' : 'gray'}">Strength</a>
+        <a (click)="function('Cardio')" [ngStyle]="{color: selectedTagIndex === 'Cardio' ? 'orange' : 'gray'}">Cardio
+        </a>
+        <a (click)="function('Accessories')"
+            [ngStyle]="{color: selectedTagIndex === 'Accessories' ? 'orange' : 'gray'}">Accessories</a>
+        <a (click)="function('Supplements')"
+            [ngStyle]="{color: selectedTagIndex === 'Supplements' ? 'orange' : 'gray'}">Supplements</a>
+    </div>
+    <div class="flex">
+        <div class="image-slider">
+            <div class="container" [style.transform]="'translateX(-' + currentIndex * screen + '%)'">
+                <ng-container *ngFor="let item of products">
+                    <div class="card" routerLink="/details/{{item._id}}/{{item.productType}}">
+                        <div class="image">
+                            <div class="badge" *ngIf="item.productDiscount>0 ">
+                                <div class="discount">{{item.productDiscount}}% OFF</div>
+                            </div>
+                            <img src="{{item.productImage}}" alt="">
+                        </div>
+                        <div class="info">
+                            <div class="flex">
+                                <p
+                                    style="white-space:nowrap; overflow:hidden; text-overflow: ellipsis; max-width: 100ch;">
+                                    {{item.productBrand}} {{item.productName}}</p>
+                            </div>
+                            <div class="price">
+                                <div class="cost" *ngIf="item.productDiscount>0">
+                                    <p class="discountCost"> {{ item.productCost -
+                                        item.productCost *
+                                        item.productDiscount/100 | currency:"INR" }}
+                                    </p>
+                                    <p class="productCost">
+                                        {{item.productCost | currency:"INR"}}
+                                    </p>
+                                </div>
+                                <div *ngIf="!item.productDiscount || item.productDiscount < 0 ">
+                                    <p>
+                                        {{item.productCost | currency:"INR"}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <button (click)="slideLeft()" *ngIf="currentIndex !==0" class="button-1">&#x2039;</button>
+            <button (click)="slideRight()" *ngIf="currentIndex < 2" class="button-2">&#x203A;</button>
+
+           
+        </div>
+        
+    </div>
+    <div class="gif-container" *ngIf="gif">
+        <img src="assets/loading.gif" alt="" class="gif">
+    </div>
+    <div (click)="viewAll()" class="shopAll">View all <fa-icon [icon]="faChevronRight"
+        class="icons uil-search open-search"></fa-icon></div>
+        
+</div>
+
+
+

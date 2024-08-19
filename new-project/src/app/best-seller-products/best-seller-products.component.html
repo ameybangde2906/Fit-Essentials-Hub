@@ -1,0 +1,35 @@
+<div class="container" >
+    <ng-container *ngFor="let item of productList">
+        <div class="card" routerLink="/details/{{item._id}}/{{item.productType}}">
+            <div class="image">
+                <div class="badge" *ngIf="item.productDiscount>0 ">
+                    <div class="discount">{{item.productDiscount}}% OFF</div>
+                </div>
+                <img src="{{item.productImage}}" alt="">
+            </div>
+            <div class="info">
+                <div class="flex">
+                    <p style="white-space:nowrap; overflow:hidden; text-overflow: ellipsis; max-width: 100ch;">
+                        {{item.productBrand}} {{item.productName}}</p>
+                </div>
+                <div class="price">
+                    <div class="cost" *ngIf="item.productDiscount>0">
+                        <p class="discountCost"> {{ item.productCost -
+                            item.productCost *
+                            item.productDiscount/100 | currency:"INR" }}</p>
+                        <p class="productCost"> {{item.productCost | currency:"INR"}}
+                        </p>
+                    </div>
+                    <div *ngIf="!item.productDiscount || item.productDiscount < 0 ">
+                        <p>{{item.productCost | currency:"INR"}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </ng-container>
+</div>
+
+<div class="gif-container" *ngIf="show">
+        <img src="assets/loading.gif" alt="" class="gif">
+</div>

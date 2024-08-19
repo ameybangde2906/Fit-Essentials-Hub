@@ -1,0 +1,100 @@
+<div class="form">
+    <div class="login">
+        <form [formGroup]="addproductForm">
+            <div class="add-products">
+                <p class="heading">Add New Product</p>
+                <div class="input">
+                    <span class="input-heading">Name of Product</span>
+                    <input formControlName="productName" type="text">
+                    <span
+                        *ngIf="addproductForm.hasError('required','productName') && addproductForm.controls['productName'].dirty"
+                        class="required">*Please Enter the Name of Product</span><br>
+                </div>
+
+                <div class="input">
+                    <span class="input-heading">Brand of Product</span>
+                    <input formControlName="productBrand" type="text">
+                    <span
+                        *ngIf="addproductForm.hasError('required','productBrand') && addproductForm.controls['productBrand'].dirty"
+                        class="required">*Please Enter the Brand of Product </span><br>
+                </div>
+
+                <div class="input">
+                    <span class="input-heading">Net Weight of Product</span>
+                    <input formControlName="productWeight" type="text">
+                    <span
+                        *ngIf="addproductForm.hasError('required','productWeight') && addproductForm.controls['productWeight'].dirty"
+                        class="required">*Please Enter the Net Weight of Product </span><br>
+                </div>
+                <div class="type">
+                    <div class="input">
+                        <span class="input-heading">Cost of Product</span>
+                        <input formControlName="productCost" type="text" class="space" placeholder="Write only numbers">
+                        <span
+                            *ngIf="addproductForm.hasError('required','productCost') && addproductForm.controls['productCost'].dirty"
+                            class="required1">*Please Enter the Price of Product</span><br>
+                    </div>
+                    <div class="input">
+                        <span class="input-heading">Discount on Product</span>
+                        <input formControlName="productDiscount" type="text" placeholder="Write only numbers">
+                        <span
+                            *ngIf="addproductForm.hasError('required','productDiscount') && addproductForm.controls['productDiscount'].dirty"
+                            class="required1">*Please Enter the Price of Product</span><br>
+                    </div>
+                </div>
+
+
+                <div class="type">
+                    <div class="input">
+                        <span class="input-heading">Category of Product</span>
+                        <select formControlName="productCategory" (change)="onSelect($event)" class="space">
+                            <option value="" disabled selected>Select Category</option>
+                            <option *ngFor="let item of category" value="{{item.category}}">{{item.category}}</option>
+                        </select>
+                        <span
+                            *ngIf="addproductForm.hasError('required','productCategory') && addproductForm.controls['productCategory'].dirty"
+                            class="required1">*Please Select the Category of Product</span><br>
+                    </div>
+
+                    <div class="input">
+                        <span class="input-heading">Type of Product</span>
+                        <select formControlName="productType">
+                            <option value="" disabled selected>Select Type</option>
+                            <option *ngFor="let item of type">{{item.type}}</option>
+                        </select>
+                        <span
+                            *ngIf="addproductForm.hasError('required','productType') && addproductForm.controls['productType'].dirty"
+                            class="required1">*Please Select the Type of Product</span><br>
+                    </div>
+                </div>
+
+                <div class="input">
+                    <span class="input-heading">Features of product</span>
+                    <textarea formControlName="productFeature" type="text"></textarea>
+                    <span
+                        *ngIf="addproductForm.hasError('required','productFeature') && addproductForm.controls['productFeature'].dirty"
+                        class="required">*Please Enter the Features of Product</span><br>
+                </div>
+
+                <div class="input">
+                    <span class="input-heading">Description of product</span>
+                    <textarea formControlName="productDescription" type="text"></textarea>
+                    <span
+                        *ngIf="addproductForm.hasError('required','productDescription') && addproductForm.controls['productDescription'].dirty"
+                        class="required">*Please Enter the Description of Product</span><br>
+                </div>
+                <div class="input">
+                    <span class="input-heading">Image Link of product</span>
+                    <input formControlName="productImage" type="text">
+                    <span
+                        *ngIf="addproductForm.hasError('required','productImage') && addproductForm.controls['productImage'].dirty"
+                        class="required">*Please Enter the Link of Product Image</span><br>
+                </div>
+
+                <button [disabled]="addproductForm.invalid" [class.disabled]="addproductForm.invalid"
+                    (click)="addproduct()">Add Product</button>
+
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="main">
+  <div class="flex">
+    <img src="assets/gym brands/homepage.webp">
+  </div>
+  <div class="text">
+    <strong>BRING THE CLUB EXPERIENCE HOME</strong>
+    <p class="font">CLUB SERIES +</p>
+    <p class="font-2">CARDIO EQUIPMENT</p>
+    <button routerLink="/category/Cardio">Shop Now</button>
+  </div>
+</div>
+
+
+
+<app-best-sellers></app-best-sellers>
+<app-top-deals></app-top-deals>
+<div>
+  <div class="flex-2">
+    <img src="assets/gym brands/weights mainpage.webp">
+    
+    <div class="dot dot-1" (click)="isSmallScreen ? navigateTo('/Kettlebells') : activeBox = 1" ></div>
+    <div class="box box-1" *ngIf="activeBox===1">
+      <div class="box-img">
+        <img src="assets/gym brands/kb.webp">
+      </div>
+      <p>Kettlebells Strating from <br>{{1500 | currency:"INR"}}. <a routerLink="/Kettlebells"> Quick view</a></p>
+    </div>
+
+    <div class="dot dot-2" (click)="isSmallScreen ? navigateTo('/Plates') : activeBox = 2"></div>
+    <div class="box box-2" *ngIf="activeBox===2">
+      <div class="box-img">
+        <img src="assets/gym brands/plates.webp">
+      </div>
+      <p>Plates Strating from <br>{{4599 | currency:"INR"}}. <a routerLink="/Plates"> Quick view</a></p>
+    </div>
+
+    <div class="dot dot-3" (click)="isSmallScreen ? navigateTo('/Dumbbells') : activeBox = 3"></div>
+    <div class="box box-3" *ngIf="activeBox===3">
+      <div class="box-img">
+        <img src="assets/gym brands/db.webp">
+      </div>
+      <p>Dumbbells Strating from <br>{{1200 | currency:"INR"}}. <a routerLink="/Dumbbells" > Quick view</a></p>
+    </div>
+
+  </div>
+</div>
+<app-shop-by-brands></app-shop-by-brands>
+<app-top-supp-deals></app-top-supp-deals>
+<app-top-supp-brands></app-top-supp-brands>
+<app-top-acc-deals></app-top-acc-deals>
+<app-why-fitessentials></app-why-fitessentials>

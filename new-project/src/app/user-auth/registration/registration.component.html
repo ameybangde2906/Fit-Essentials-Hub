@@ -1,0 +1,70 @@
+<div class="form" [ngClass]="{'blur-bg': isBlur}">
+    <div>
+        <form [formGroup]="registerForm" class="div">
+            <div class="login">
+                <div class="logo">
+                    <fa-icon [icon]="dumbbell" class="cross"></fa-icon>
+                </div>
+                <div class="select">
+                    <div class="contain">
+                        <p routerLink="/login">Login</p>
+                        <P class="black">Register</P>
+                    </div>
+                </div>
+
+                <div class="input">
+                    <input formControlName="firstName" type="text" placeholder=" First Name">
+                    <span
+                        *ngIf="registerForm.hasError('required','firstName') && registerForm.controls['firstName'].dirty"
+                        class="required">*First Name is required</span><br>
+                </div>
+
+                <div class="input">
+                    <input formControlName="lastName" type="text" placeholder=" Last Name">
+                    <span
+                        *ngIf="registerForm.hasError('required','lastName') && registerForm.controls['lastName'].dirty"
+                        class="required">*Last Name is required</span><br>
+                </div>
+
+                <div class="input">
+                    <input formControlName="email" type="text" placeholder=" Email ">
+                    <span *ngIf="registerForm.hasError('required','email') && registerForm.controls['email'].dirty"
+                        class="required">*Email is required</span>
+                    <span *ngIf="registerForm.hasError('email','email')" class="required">*Email is invalid</span><br>
+                </div>
+
+                <div class="input">
+                    <input formControlName="userName" type="text" placeholder=" Username">
+                    <span
+                        *ngIf="registerForm.hasError('required','userName') && registerForm.controls['userName'].dirty"
+                        class="required">*Username is required</span><br>
+                </div>
+
+                <div class="input">
+                    <input formControlName="password" type="password" placeholder=" Password">
+                    <span
+                        *ngIf="registerForm.hasError('required','password') && registerForm.controls['password'].dirty"
+                        class="required">*Password is required</span><br>
+                </div>
+
+                <div class="input">
+                    <input formControlName="ConfirmPassword" type="password" placeholder=" Confirm Password">
+                    <span
+                        *ngIf="registerForm.hasError('required','ConfirmPassword') && registerForm.controls['ConfirmPassword'].dirty"
+                        class="required">*Confirm Password is required</span>
+                    <span *ngIf="registerForm.hasError('confirmPasswordValidator','ConfirmPassword')"
+                        class="required">*Password didn't matched!</span><br><br>
+                </div>
+
+                <button [disabled]="registerForm.invalid" [class.disabled]="registerForm.invalid"
+                    (click)="register()">SIGN UP</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="pop-up" *ngIf="show">Registered successfully ! <fa-icon [icon]="check" class="check"></fa-icon></div>
+
+
+<div class="gif-container" *ngIf="gif">
+    <img src="assets/loading.gif" alt="" class="gif">
+</div>

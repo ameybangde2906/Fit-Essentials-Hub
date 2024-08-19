@@ -1,0 +1,103 @@
+<div class="form">
+    <div class="login">
+        <form [formGroup]="updateProductForm">
+            <div class="add-products" *ngIf="productList">
+                <p class="p1">Update Product</p>
+
+                <div class="input">
+                    <span class="input-heading">Name of Product</span>
+                    <input formControlName="productName" type="text" ngModel="{{productList.productName}}">
+                    <span
+                        *ngIf="updateProductForm.hasError('required','productName') && updateProductForm.controls['productName'].dirty"
+                        class="required"> *Please Enter the Name of Product</span><br>
+                </div>
+
+                <div class="input">
+                    <span class="input-heading">Brand of Product</span>
+                    <input formControlName="productBrand" type="text" ngModel="{{productList.productBrand}}">
+                    <span
+                        *ngIf="updateProductForm.hasError('required','productBrand') && updateProductForm.controls['productBrand'].dirty"
+                        class="required"> *Please Enter the Brand of Product </span><br>
+                </div>
+
+                <div class="input">
+                    <span class="input-heading">Net Weight of Product</span>
+                    <input formControlName="productWeight" type="text" ngModel="{{productList.productWeight}}">
+                    <span
+                        *ngIf="updateProductForm.hasError('required','productWeight') && updateProductForm.controls['productWeight'].dirty"
+                        class="required"> *Please Enter the Net Weight of Product </span><br>
+                </div>
+
+                <div class="type">
+                    <div class="input">
+                        <span class="input-heading">Cost of Product</span>
+                        <input formControlName="productCost" type="text" class="space"
+                            ngModel="{{productList.productCost}}">
+                        <span
+                            *ngIf="updateProductForm.hasError('required','productCost') && updateProductForm.controls['productCost'].dirty"
+                            class="required1"> *Please Enter the Price of Product</span><br>
+                    </div>
+                    <div class="input">
+                        <span class="input-heading">Discount on Product</span>
+                        <input formControlName="productDiscount" type="text" 
+                            ngModel="{{productList.productDiscount}}">
+                        <span
+                            *ngIf="updateProductForm.hasError('required','productDiscount') && updateProductForm.controls['productDiscount'].dirty"
+                            class="required1"> *Please Enter the Price of Product</span><br>
+                    </div>
+                </div>
+
+                <div class="type">
+                    <div class="input">
+                        <span class="input-heading">Category of Product</span>
+                        <select formControlName="productCategory" ngModel="{{productList.productCategory}}"
+                            (change)="onSelect($event)" class="space">
+                            <option value="" disabled>Select Category</option>
+                            <option *ngFor="let item of category" value="{{item.category}}">{{item.category}}</option>
+                        </select>
+                        <span
+                            *ngIf="updateProductForm.hasError('required','productCategory') && updateProductForm.controls['productCategory'].dirty"
+                            class="required1"> *Please Enter the Category of Product</span><br>
+                    </div>
+                    <div class="input">
+                        <span class="input-heading">Type of Product</span>
+                        <select formControlName="productType" ngModel="{{productList.productType}}">
+                            <option value="" disabled selected>Select Type</option>
+                            <option *ngFor="let item of type" value="{{item.type}}">{{item.type}}</option>
+                        </select>
+                        <span
+                            *ngIf="updateProductForm.hasError('required','producType') && updateProductForm.controls['productType'].dirty"
+                            class="required1"> *Please Enter the Category of Product</span><br>
+                    </div>
+                </div>
+
+                <div class="input">
+                    <span class="input-heading">Features of Product</span>
+                    <textarea formControlName="product" type="text"
+                        ngModel="{{productList.productFeature}}"></textarea>
+                    <span
+                        *ngIf="updateProductForm.hasError('required','productFeature') && updateProductForm.controls['productFeature'].dirty"
+                        class="required"> *Please Enter the Features of Product</span><br>
+                </div>
+                <div class="input">
+                    <span class="input-heading">Description of Product</span>
+                    <textarea formControlName="productDescription" type="text"
+                        ngModel="{{productList.productDescription}}"></textarea>
+                    <span
+                        *ngIf="updateProductForm.hasError('required','productDescription') && updateProductForm.controls['productDescription'].dirty"
+                        class="required"> *Please Enter the Description of Product</span><br>
+                </div>
+                <div class="input">
+                    <span class="input-heading">Image Link of Product</span>
+                    <input formControlName="productImage" type="text" ngModel="{{productList.productImage}}">
+                    <span
+                        *ngIf="updateProductForm.hasError('required','productImage') && updateProductForm.controls['productImage'].dirty"
+                        class="required"> *Please Enter the Link of Product Image</span><br>
+                </div>
+
+                <button (click)="updateProduct(productList._id)">Save Changes</button>
+
+            </div>
+        </form>
+    </div>
+</div>

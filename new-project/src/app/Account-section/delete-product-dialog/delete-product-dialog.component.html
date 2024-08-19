@@ -1,0 +1,18 @@
+<div class="main">
+    <div class="delete" id="show">
+        <div class="heading">
+            <div class="img"><div class="circle"><fa-icon [icon]="trash" class="icons trash"></fa-icon> </div></div>
+            <p>Are you sure?</p>
+        </div>
+
+        <div class="center">
+            <P>Deleting will permmanently remove this product from the system.<span>This cannot be undone!</span></P>
+        </div>
+
+        <div class="btn">
+            <button class="btn-1" (click)="cancel()">Cancel</button>
+            <button class="btn-2" (click)="delete()">Delete</button>
+        </div>
+
+    </div>
+</div>

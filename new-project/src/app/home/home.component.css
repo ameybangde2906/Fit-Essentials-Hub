@@ -1,0 +1,190 @@
+.main {
+  width: 100%;
+  height: 90%;
+}
+
+.flex {
+  width: 100%;
+  height: 80vh;
+  position: relative;
+}
+
+.text {
+  position: absolute;
+  top: 50%;
+  left: 12%;
+}
+
+strong {
+  font-size: 12px;
+  color: white;
+}
+
+.text .font {
+  color: black;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  font-size: 45px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.font-2 {
+  color: white;
+  font-size: 45px;
+  margin-bottom: 30px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+button {
+  width: 120px;
+  height: 40px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.flex img,
+.flex-2 img {
+  width: 100%;
+  height: 100%;
+}
+
+.flex-2 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.dot {
+  cursor: pointer;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border: 7px solid white;
+  background-color: black;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.dot-1 {
+  top: 84%;
+  left: 28%;
+}
+
+.dot-2 {
+  top: 10%;
+  right: 40%;
+}
+
+.dot-3 {
+  bottom: 23%;
+  right: 22%;
+}
+
+.dot::before,
+.dot::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgb(134, 134, 134);
+  animation: spread 2s linear infinite;
+}
+
+.dot::before {
+  animation-delay: 0.2s;
+}
+
+.dot::after {
+  animation-delay: 0.2s;
+}
+
+@keyframes spread {
+  0% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: scale(6);
+    opacity: 0;
+  }
+}
+
+.box-img{
+  width: 23%;
+  height: 70%;
+}
+
+.box{
+  display: flex;
+  align-items: center;
+  justify-content:space-evenly;
+  background-color: white;
+  color: black;
+  position: absolute;
+  width: 200px;
+  height: 70px;
+  border-radius: 6px;
+}
+.box p{
+  font-size: 12px;
+}
+.box-1{
+  margin-left: 20px;
+  top: 80%;
+  left: 29%;
+}
+.box-2 {
+  top: 9%;
+  right: 43%;
+}
+.box-3{
+  bottom: 19%;
+  right: 25%;
+}
+
+@media(max-width:750px) {
+  .main {
+    height: 50%;
+  }
+  .flex{
+    height: 40vh;
+  }
+
+  strong{
+    font-size: 11px;
+  }
+  .text {
+    top: 20%;
+    left: 5%;
+  }
+
+  .text .font,
+  .font-2 {
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+
+  button {
+    width: 90px;
+    height: 30px;
+    font-size: 12px;
+  }
+}
+@media(max-width:450px){
+  .main{
+    height: 35%;
+  }
+  strong{
+    font-size: 7px;
+  }
+  .text .font, .font-2{
+    margin-top: 7px;
+    font-size: 20px;
+  }
+
+}

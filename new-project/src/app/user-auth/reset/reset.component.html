@@ -1,0 +1,29 @@
+<div class="form">
+    <div class="div">
+        <form [formGroup]="resetForm">
+            <div class="login">
+                <p class="p1">Reset your password</p>
+                <p class="p2">Please use strong password</p>
+
+                <div class="input">
+                    <input formControlName="password" type="password" placeholder=" Password">
+                    <span
+                        *ngIf="resetForm.hasError('required','password') && resetForm.controls['password'].dirty"
+                        class="required">*Password is required</span><br>
+                </div>
+
+                <div class="input">
+                    <input formControlName="ConfirmPassword" type="password" placeholder=" Confirm Password">
+                    <span
+                        *ngIf="resetForm.hasError('required','ConfirmPassword') && resetForm.controls['ConfirmPassword'].dirty"
+                        class="required">*Confirm Password is required</span>
+                    <span *ngIf="resetForm.hasError('confirmPasswordValidator','ConfirmPassword')"
+                        class="required">*Password didn't matched!</span><br><br>
+                </div>
+
+                <button [disabled]="resetForm.invalid" [class.disabled]="resetForm.invalid"
+                    (click)="reset()">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

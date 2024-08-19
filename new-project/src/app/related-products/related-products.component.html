@@ -1,0 +1,32 @@
+<div class="main" *ngIf=show>
+    <p class="heading">You May Also Like</p>
+    <div class="container">
+        <div class="card" *ngFor="let item of relatedProducts"  (click)="select(item._id,item.productType)">
+            <div class="image">
+                <div class="badge" *ngIf="item.productDiscount>0 ">
+                    <div class="discount">{{item.productDiscount}}% OFF</div>
+                </div>
+                <img src="{{item.productImage}}">
+            </div>
+            <div class="info">
+                <p class="name" style="white-space:nowrap; overflow:hidden; text-overflow: ellipsis; max-width: 100ch;">
+                    {{item.productName}}</p>
+                <div class="price">
+                    <div class="cost" *ngIf="item.productDiscount>0">
+                        <p class="discountCost"><fa-icon [icon]="faIndianRupeeSign"
+                                class="icons uil-search open-search icon"></fa-icon> {{ item.productCost -
+                            item.productCost *
+                            item.productDiscount/100 | number:"1.0-0" }}</p>
+                        <p class="productCost"><fa-icon [icon]="faIndianRupeeSign"
+                                class="icons uil-search open-search"></fa-icon> {{item.productCost | number:"1.0-0"}}
+                        </p>
+                    </div>
+                    <div *ngIf="!item.productDiscount || item.productDiscount < 0 ">
+                        <p><fa-icon [icon]="faIndianRupeeSign" class="icons uil-search open-search"></fa-icon>
+                            {{item.productCost| number:"1.0-0"}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

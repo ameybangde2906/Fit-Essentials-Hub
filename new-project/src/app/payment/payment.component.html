@@ -1,0 +1,13 @@
+<div class="box">
+    <p>Select Payment Method</p>
+    <div class="box-2" (click)="paymentDone()"><input #button type="radio" [checked]="radioChecked" value="Cash on Delivery"> Cash on Delivery
+        <div><button class="btn" *ngIf="radioChecked" (click)="orderPlaced(button.value)">CONFIRM ORDER</button></div>
+    </div>
+</div>
+
+<div class="message-container" *ngIf="popup">
+    <div class="message-box">
+      <div class="icon">✓</div>
+      <div class="message">Your order has been placed successfully!</div>
+    </div>
+  </div>

@@ -1,0 +1,49 @@
+<div class="container">
+    <app-accounts></app-accounts>
+    <div class="box-1">
+        <p class="heading">My Wishlist</p>
+        <div class="main">
+            <div *ngFor="let product of products" class="box-2">
+                <div class="flex">
+                    <div class="img" routerLink="/details/{{product.productId}}/{{product.productType}}"><img [src]="product.productImage"
+                            alt="{{ product.productName }}"></div>
+                    <div class="flex-2">
+                        <div class="info" routerLink="/details/{{product.productId}}/{{product.productType}}">
+                            <p class="name" >{{ product.productBrand | titlecase }} {{ product.productName | titlecase}} </p>
+                            <p class="weight">Weight: {{product.productWeight}}</p>
+                        </div>
+                        <div class="costPrice">
+                            <div class="cost" *ngIf="!product.productDiscount">
+                                <p>{{product.productCost | currency:"INR" }}</p>
+                            </div>
+                            <div class="cost" *ngIf="product.productDiscount">
+                                <p class="discountPrice">
+                                    {{product.productCost - product.productCost * product.productDiscount/100 | currency:"INR"}}</p>
+                                <p class="productCost" *ngIf="product.productDiscount && product.productDiscount>0">
+                                    {{product.productCost | currency:"INR" }}</p>
+                                <p class="discount" *ngIf="product.productDiscount>0"> {{product.productDiscount}}% off
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btn">
+                        <button class="button-1" (click)="delete(product.productId,product.userId)"><fa-icon
+                                [icon]="trash" class="cross"></fa-icon></button>
+                        <button class="button-2" (click)="moveTocart(product)"><fa-icon [icon]="cart"
+                                class="cross"></fa-icon></button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="box-3" *ngIf="show">
+            <div class="no-order"><img src="assets/empty-wishlist.png"></div>
+            <div class="box-3-text">
+                <h2>Your wishlist is Empty !</h2>
+                <p>Explore more and shortlist some items...</p>
+                <button routerLink="">Start Shopping</button>
+            </div>
+        </div>
+    </div>
+</div>

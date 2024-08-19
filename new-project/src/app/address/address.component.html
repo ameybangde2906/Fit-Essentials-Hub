@@ -1,0 +1,266 @@
+<div class="flex-box">
+    <div class="flex-box2">
+        <div>
+            <div class="h1" *ngIf="sendAddress">
+                <p class="p3">Delivery Address</p>
+            </div>
+            <div class="addressData" *ngIf="addressData">
+                <div>
+                    <p class="addressData-p">Delivery Address <fa-icon [icon]="check" class="icons check"></fa-icon></p>
+                    <p class="addressData-p2"><span class="addressData-span">{{addressData.firstName | titlecase}}
+                            {{addressData.lastName | titlecase}}</span> {{addressData.address | titlecase}},
+                        {{addressData.town | titlecase}}, {{addressData.city | titlecase}}, {{addressData.state |
+                        titlecase}},
+                        {{addressData.country | titlecase}} - <span
+                            class="addressData-span">{{addressData.pincode}}</span>
+                    </p>
+                </div>
+                <button class="addressData-button" (click)="addressChange()">Change</button>
+            </div>
+
+            <div *ngIf="sendAddress">
+                <div *ngIf="!edit">
+                    <div class="box" *ngFor=" let address of address; let i =index" (click)="selectAddress(address)"
+                        [class.active-address]="isSelected(address)">
+
+                        <div class="box-2">
+                            <input type="radio" [checked]="isSelected(address)" class="radio">
+
+                            <span class="name">{{address.firstName | titlecase}} {{address.lastName | titlecase}}</span>
+                            <span class="deliverAt">{{address.deliverAt}}</span> <span class="phone">
+                                {{address.phone}}</span>
+
+                            <div class="address">
+                                <span>{{address.address | titlecase}}, </span> <span> {{address.town | titlecase}},
+                                </span>
+                                <span>{{address.city | titlecase}}, </span>
+                            </div>
+
+                            <div class="address-1"><span>{{address.state | titlecase}}, </span> <span>{{address.country
+                                    | titlecase}} - </span>
+                                <span class="pincode">{{address.pincode}}</span>
+                            </div>
+
+                            <div *ngIf="isSelected(address)"><button class="deliver" (click)="deliver(address)">Deliver
+                                    Here</button></div>
+                        </div>
+
+                        <div class="edit" *ngIf="isSelected(address)" (click)="togglefn(address._id)">EDIT</div>
+                    </div>
+                </div>
+
+                <form [formGroup]="updateForm" *ngIf="edit">
+                    <div class="head">
+                        <input type="radio" class="radio-btn" [checked]="isSelected(address)">
+                        <h3>EDIT ADDRESS</h3>
+                    </div>
+
+
+                    <div class="main" *ngIf="add">
+                        <div class="flex">
+                            <div>
+                                <span class="span">First Name*</span>
+                                <input class="input" formControlName="firstName" ngModel="{{add.firstName}}">
+                            </div>
+
+                            <div>
+                                <span class="span">Last Name*</span>
+                                <input class="input" formControlName="lastName" ngModel="{{add.lastName}}">
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div>
+                                <span class="span">Phone*</span>
+                                <input class="input" formControlName="phone" ngModel="{{add.phone}}">
+                            </div>
+
+                            <div>
+                                <span class="span">Email*</span>
+                                <input class="input" formControlName="email" ngModel="{{add.email}}">
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div>
+                                <span class="span">Address(Area)*</span>
+                                <input class="input" formControlName="address" ngModel="{{add.address}}">
+                            </div>
+
+                            <div>
+                                <span class="span">Locality / Town*</span>
+                                <input class="input" formControlName="town" ngModel="{{add.town}}">
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div>
+                                <p class="span">City / District*</p>
+                                <input class="input" formControlName="city" ngModel="{{add.city}}">
+                            </div>
+
+                            <div>
+                                <p class="span">State*</p>
+                                <input class="input" formControlName="state" ngModel="{{add.state}}">
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div>
+                                <span class="span">Country*</span>
+                                <select formControlName="country" ngModel="{{add.country}}">
+                                    <option value="India">India</option>
+                                    <option value="China">China</option>
+                                    <option value="United States of America">United States of America</option>
+                                    <option value="United Kingdom">United Kingdom</option>
+                                    <option value="Germany">Germany</option>
+                                    <option value="Brazil">Brazil</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <span class="span">Pincode*</span>
+                                <input class="input" formControlName="pincode" ngModel="{{add.pincode}}">
+                            </div>
+
+                        </div>
+                        <div class="radio-btn2">
+                            <p>Address Type</p>
+                            <div class="radio-btn2-div">
+                                <div><input type="radio" formControlName="deliverAt" value="Home"
+                                        ngModel="{{add.deliverAt}}">Home (
+                                    All
+                                    day delivery )</div>
+                                <div> <input type="radio" formControlName="deliverAt" value="Work" class="btn-3"
+                                        ngModel="{{add.deliverAt}}">Work
+                                    ( Delivery between 10AM
+                                    -
+                                    5PM )</div>
+                            </div>
+                        </div>
+                        <button class="btn" (click)="update(add._id)">SAVE</button>
+                        <span class="span-1" (click)="close()">CANCEL</span>
+                    </div>
+
+                </form>
+
+
+                <div class="box-3" (click)="toggle()" *ngIf="hide">
+                    <div><fa-icon [icon]="faPlus" class="icons user"></fa-icon><span>ADD A NEW ADDRESS</span></div>
+                </div>
+
+                <form [formGroup]="addressForm" class="addressForm" *ngIf="show">
+                    <div class="head">
+                        <input type="radio" class="radio-btn" [checked]="isSelected(address)">
+                        <h3 class="new-address">ADD A NEW ADDRESS</h3>
+                    </div>
+
+
+                    <div class="main">
+                        <div class="flex">
+                            <div>
+                                <span class="span">First Name*</span>
+                                <input class="input" formControlName="firstName">
+                            </div>
+
+                            <div>
+                                <span class="span">Last Name*</span>
+                                <input class="input" formControlName="lastName">
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div>
+                                <span class="span">Phone*</span>
+                                <input class="input" formControlName="phone">
+                            </div>
+
+                            <div>
+                                <span class="span">Email*</span>
+                                <input class="input" formControlName="email">
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div>
+                                <span class="span">Address(Area)*</span>
+                                <input class="input" formControlName="address">
+                            </div>
+
+                            <div>
+                                <span class="span">Locality / Town*</span>
+                                <input class="input" formControlName="town">
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div>
+                                <p class="span">City / District*</p>
+                                <input class="input" formControlName="city">
+                            </div>
+
+                            <div>
+                                <p class="span">State*</p>
+                                <input class="input" formControlName="state">
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div>
+                                <span class="span">Country*</span>
+                                <select formControlName="country">
+                                    <option>India</option>
+                                    <option>China</option>
+                                    <option>United States of America</option>
+                                    <option>United Kingdom</option>
+                                    <option>Germany</option>
+                                    <option>Brazil</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <span class="span">Pincode*</span>
+                                <input class="input" formControlName="pincode">
+                            </div>
+
+                        </div>
+                         <div class="radio-btn2">
+                            <p>Address Type</p>
+                            <div class="radio-btn2-div">
+                                <div><input type="radio" formControlName="deliverAt" value="Home"
+                                        ngModel="{{add.deliverAt}}">Home (
+                                    All
+                                    day delivery )</div>
+                                <div> <input type="radio" formControlName="deliverAt" value="Work" class="btn-3"
+                                        ngModel="{{add.deliverAt}}">Work
+                                    ( Delivery between 10AM
+                                    -
+                                    5PM )</div>
+                            </div>
+                        </div>
+                        <button class="btn" (click)="save()">SAVE</button>
+                        <span class="span-1" (click)="cancel()">CANCEL</span>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <div class="h1">
+                <p class="p3">Payment Options</p>
+            </div>
+            <div class="payments" *ngIf="!sendAddress">
+                <app-payment [item]="addressData"></app-payment>
+            </div>
+        </div>
+    </div>
+
+    <div class="summary-box">
+        <div class="summary">
+            <h2>Summary</h2>
+            <div>
+                <div class="summary-div"><span>Amount:</span><span>
+                        {{priceSummary.price | currency:"INR" }}</span></div>
+                <div class="summary-div"><span>Delivery:</span><span class="free" *ngIf="free">Free delivery</span><span
+                        *ngIf="notFree">+ {{priceSummary.delivery}}</span></div>
+                <div class="summary-div discount"><span>Discount:</span><span>- {{priceSummary.discount|
+                        currency:"INR"}} </span></div>
+                <div class="summary-div total"><span>Total:</span><span> {{priceSummary.total| currency:"INR"}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

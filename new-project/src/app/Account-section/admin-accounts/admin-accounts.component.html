@@ -1,0 +1,14 @@
+<div class="menu">
+    <div class="colomn-1">
+        <div class="hello"><img src="assets/admin.png">
+            <h2> Hello {{adminName|titlecase}}</h2>
+        </div>
+        <div class="colomn-2">
+            <div class="profile"><fa-icon [icon]="faUser" class="icons user"></fa-icon>Profile Information</div>
+            <div routerLink="/add-products"><fa-icon [icon]="faPlusMinus" class="icons user"></fa-icon>Add Products</div>
+            <div routerLink="/product-list"><fa-icon [icon]="faRectangleList" class="icons user"></fa-icon>Product List
+            </div>
+            <div (click)="adminLogout()"><fa-icon [icon]="faPowerOff" class="icons user"></fa-icon>Logout</div>
+        </div>
+    </div>
+</div>

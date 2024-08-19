@@ -1,0 +1,39 @@
+<div class="container">
+    <ng-container *ngFor="let item of productList">
+
+        <div class="card" routerLink="/details/{{item._id}}/{{item.productType}}">
+            <div class="image">
+                <span class="badge" *ngIf="item.productDiscount>0 ">
+                    <p class="discount">{{item.productDiscount}}% OFF</p>
+                </span>
+                <img src="{{item.productImage}}" alt="">
+            </div>
+            <div class="info">
+                <div class="flex">
+                    <p style="white-space:nowrap; overflow:hidden; text-overflow: ellipsis; max-width: 100ch;">
+                        {{item.productBrand}} {{item.productName}}</p>
+                </div>
+                <div class="price">
+                    <div class="cost" *ngIf="item.productDiscount>0">
+                        <p class="discountCost"><fa-icon [icon]="faIndianRupeeSign"
+                                class="icons uil-search open-search icon"></fa-icon> {{ item.productCost -
+                            item.productCost *
+                            item.productDiscount/100 | number:"1.0-0" }}</p>
+                        <p class="productCost"><fa-icon [icon]="faIndianRupeeSign"
+                                class="icons uil-search open-search"></fa-icon> {{item.productCost | number:"1.0-0"}}
+                        </p>
+                    </div>
+                    <div *ngIf="!item.productDiscount || item.productDiscount < 0 ">
+                        <p><fa-icon [icon]="faIndianRupeeSign" class="icons uil-search open-search"></fa-icon>
+                            {{item.productCost| number:"1.0-0"}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>
+
+<div *ngIf="noResult" class="noResult">
+        <img src="assets/noResult (2).png" alt="Opps...No Result Found">
+        <p>Opps...No Result Found !</p>
+</div>

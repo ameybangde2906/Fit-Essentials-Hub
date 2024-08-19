@@ -1,0 +1,140 @@
+<div class="navbar" >
+  <div class="header">
+    <div class="logo"><a routerLink="/"><img class="img1" src="assets/newlogo.jpg"></a></div>
+
+    <div class="accounts">
+      <div class="search-input" #searchBar>
+        <input type="text" #searchInput (keyup)="searchProduct($event)"
+          (keydown.enter)="submitSearch(searchInput.value)"
+          placeholder=" Search gym equipements,accessories and suppliments...." >
+        <div (click)="submitSearch(searchInput.value)" class="mg"><fa-icon [icon]="faMagnifyingGlass" class="m-glass icons"></fa-icon></div>
+      </div>
+
+      <ul class="result" *ngIf="searchResult">
+        <li *ngFor="let item of searchResult" (click)="productDetails(item._id,item.productType)">
+          <img src="{{item.productImage}}" >
+          <a
+            style="white-space:nowrap; overflow:hidden; text-overflow: ellipsis; max-width: 200ch;">{{item.productBrand}} {{item.productName}}</a>
+        </li>
+        <li *ngIf="noResult" class="no-result"><a>No result found...</a></li>
+      </ul>
+    </div>
+
+    <div class="user-icons">
+
+      <div *ngIf="!isLoggedIn() && !isAdminLoggedIn()">
+        <a routerLink="/login"><fa-icon [icon]="faCircleUser" class="icons user"></fa-icon></a>
+      </div>
+
+      <div *ngIf="isLoggedIn()">
+        <div *ngIf="!isLoggedIn()">
+          <a routerLink="/login"><fa-icon [icon]="faCircleUser" class="icons user"></fa-icon></a>
+        </div>
+        <div *ngIf="isLoggedIn()">
+          <a routerLink="/profile-info"><fa-icon [icon]="faCircleUser" class="icons user"></fa-icon></a>
+        </div>
+      </div>
+
+      <div *ngIf="isAdminLoggedIn()">
+        <div *ngIf="!isAdminLoggedIn()">
+          <a routerLink="/login"><fa-icon [icon]="faCircleUser" class="icons user"></fa-icon></a>
+        </div>
+        <div *ngIf="isAdminLoggedIn()">
+          <a routerLink="/admin-profile"><fa-icon [icon]="faCircleUser" class="icons user"></fa-icon></a>
+        </div>
+      </div>
+
+
+      <div class="cart" *ngIf="!isAdminLoggedIn()">
+        <a routerLink="/cart"><fa-icon [icon]="faCartShopping" class="icons"></fa-icon></a>
+        <div class="badge" *ngIf="!change">{{cartItems}}</div>
+      </div>
+    </div>
+
+  </div>
+  <div>
+    <div class="items">
+      <a routerLink="/category/Weights and Barbells">WEIGHTS AND BARBELLS</a>
+      <a routerLink="/category/Machines">STRENGTH MACHINES</a>
+      <a routerLink="/category/Cardio">CARDIO MACHINES</a>
+      <a routerLink="/category/Benches, Racks and Grips">BENCHES,RACKS AND GRIPS</a>
+      <a routerLink="/category/Accessories">ACCESSORIES</a>
+      <a routerLink="/category/Supplements">SUPPLEMENTS </a>
+    </div>
+  </div>
+</div>
+
+<div class="sideBar">
+  <div class="header">
+    <div (click)="menu()"><fa-icon [icon]="faBars" class="menu"></fa-icon></div>
+    <div class="logo"><a routerLink="/"><img class="img1" src="assets/newlogo.jpg"></a></div>
+
+    <div class="search-box" *ngIf="searchBox" >
+      <div class="inner-search-box" >
+        <input type="text" #searchInput (keyup)="searchProduct($event)"
+          (keydown.enter)="submitSearch(searchInput.value)" (blur)="hideSearch()"
+          placeholder=" Search gym equipements,accessories and suppliments....">
+        <div (click)="submitSearch(searchInput.value)" class="search-box-icon"><fa-icon [icon]="faMagnifyingGlass"
+            class="search-box-icon"></fa-icon>
+        </div>
+      </div>
+      <fa-icon [icon]="cross" (click)="search()"></fa-icon>
+    </div>
+    <ul class="search-result" *ngIf="searchResult" >
+      <li *ngFor="let item of searchResult">
+        <img src="{{item.productImage}}" (click)="productDetails(item._id,item.productType)">
+        <a
+          style="white-space:nowrap; overflow:hidden; text-overflow: ellipsis; max-width: 100ch;">{{item.productName}}</a>
+      </li>
+      <li *ngIf="noResult" class="no-result"><a>No result found...</a></li>
+    </ul>
+
+    <div class="user-icons">
+
+      <div><fa-icon [icon]="faMagnifyingGlass" class="icons user" (click)="search()"></fa-icon></div>
+
+      <div *ngIf="!isLoggedIn() && !isAdminLoggedIn()">
+        <a routerLink="/login"><fa-icon [icon]="faCircleUser" class="icons user"></fa-icon></a>
+      </div>
+
+      <div *ngIf="isLoggedIn()">
+        <div *ngIf="!isLoggedIn()">
+          <a routerLink="/login"><fa-icon [icon]="faCircleUser" class="icons user"></fa-icon></a>
+        </div>
+        <div *ngIf="isLoggedIn()">
+          <a routerLink="/accounts"><fa-icon [icon]="faCircleUser" class="icons user"></fa-icon></a>
+        </div>
+      </div>
+
+      <div *ngIf="isAdminLoggedIn()">
+        <div *ngIf="!isAdminLoggedIn()">
+          <a routerLink="/login"><fa-icon [icon]="faCircleUser" class="icons user"></fa-icon></a>
+        </div>
+        <div *ngIf="isAdminLoggedIn()">
+          <a routerLink="/admin-accounts"><fa-icon [icon]="faCircleUser" class="icons user"></fa-icon></a>
+        </div>
+      </div>
+
+      <div class="cart" *ngIf="!isAdminLoggedIn()">
+        <a routerLink="/cart"><fa-icon [icon]="faCartShopping" class="icons" *ngIf="!change"></fa-icon></a>
+        <div class="badge" *ngIf="!change">{{cartItems}}</div>
+      </div>
+    </div>
+
+  </div>
+  
+<div (mouseleave)="menu()" >
+  <div class="sideBar-items" *ngIf="menuBar" >
+    <a><fa-icon [icon]="cross" (click)="menu()" class="cross"></fa-icon></a>
+    <a routerLink="/category/Weights and Barbells" (click)="menu()">WEIGHTS AND BARBELLS</a>
+    <a routerLink="/category/Machines" (click)="menu()">MACHINES</a>
+    <a routerLink="/category/Cardio" (click)="menu()">CARDIO</a>
+    <a routerLink="/category/Benches, Racks and Grips" (click)="menu()">BENCHES,RACKS AND GRIPS</a>
+    <a routerLink="/category/Accessories" (click)="menu()">ACCESSORIES</a>
+    <a routerLink="/category/Supplements" (click)="menu()">SUPPLEMENTS </a>
+  </div>
+</div>
+</div>
+
+
+

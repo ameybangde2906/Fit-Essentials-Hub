@@ -1,0 +1,82 @@
+<div class="main">
+    <div class="addvert">
+        <div class="images" routerLink="/Weightlifting Belts">
+            <img src="assets/gym brands/acc-belts.webp">
+        </div>
+        <div class="images" routerLink="/Exercise Mats">
+            <img src="assets/gym brands/acc-mats.jpg">
+        </div>
+        <div class="images" routerLink="/Resistance Bands and Sling Trainer">
+            <img src="assets/gym brands/acc-res-band.jpeg">
+        </div>
+    </div>
+</div>
+
+<div class="main">
+    <p class="heading">Greate Deals on Accessories</p>
+    <div>
+        <div class="categories">
+            <a (click)="function('Gloves and Wrist Straps')"
+                [ngStyle]="{color: selectedTagIndex === 'Gloves and Wrist Straps' ? 'orange' : 'gray'}">Glove &
+                Strap</a>
+            <a (click)="function('Weightlifting Belts')"
+                [ngStyle]="{color: selectedTagIndex === 'Weightlifting Belts' ? 'orange' : 'gray'}">Belts</a>
+            <a (click)="function('Resistance Bands and Skipping Ropes')"
+                [ngStyle]="{color: selectedTagIndex === 'Resistance Bands and Skipping Ropes' ? 'orange' : 'gray'}">Bands
+                & Ropes</a>
+            <a (click)="function('Gym Bags and Sacks')"
+                [ngStyle]="{color: selectedTagIndex === 'Gym Bags and Sacks' ? 'orange' : 'gray'}">Bags</a>
+            <a (click)="function('Exercise Mats and Sling Trainer')"
+                [ngStyle]="{color: selectedTagIndex === 'Exercise Mats and Sling Trainer' ? 'orange' : 'gray'}">Mats</a>
+            <a (click)="function('Medicine Balls and Stability Balls')"
+                [ngStyle]="{color: selectedTagIndex === 'Medicine Balls and Stability Balls' ? 'orange' : 'gray'}">Balls</a>
+        </div>
+    </div>
+    <div class="flex">
+        <div class="image-slider">
+            <div class="container" [style.transform]="'translateX(-' + currentIndex * screen + '%)'">
+                <ng-container *ngFor="let item of products">
+                    <div class="card" routerLink="/details/{{item._id}}/{{item.productType}}">
+                        <div class="image">
+                            <div class="badge" *ngIf="item.productDiscount>0 ">
+                                <div class="discount">{{item.productDiscount}}% OFF</div>
+                            </div>
+                            <img src="{{item.productImage}}" alt="">
+                        </div>
+                        <div class="info">
+                            <div class="flex">
+                                <p
+                                    style="white-space:nowrap; overflow:hidden; text-overflow: ellipsis; max-width: 100ch;">
+                                    {{item.productBrand}} {{item.productName}}</p>
+                            </div>
+                            <div class="price">
+                                <div class="cost" *ngIf="item.productDiscount>0">
+                                    <p class="discountCost"> {{ item.productCost -
+                                        item.productCost *
+                                        item.productDiscount/100 | currency:"INR" }}
+                                    </p>
+                                    <p class="productCost">
+                                        {{item.productCost | currency:"INR"}}
+                                    </p>
+                                </div>
+                                <div *ngIf="!item.productDiscount || item.productDiscount < 0 ">
+                                    <p>
+                                        {{item.productCost | currency:"INR"}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <button (click)="slideLeft()" *ngIf="currentIndex !==0" class="button-1">&#x2039;</button>
+            <button (click)="slideRight()" *ngIf="currentIndex < 2" class="button-2">&#x203A;</button>
+
+
+        </div>
+    </div>
+    <div class="gif-container" *ngIf="gif">
+        <img src="assets/loading.gif" alt="" class="gif">
+    </div>
+    <div (click)="viewAll()" class="shopAll">View all <fa-icon [icon]="faChevronRight"
+            class="icons uil-search open-search"></fa-icon></div>
+</div>

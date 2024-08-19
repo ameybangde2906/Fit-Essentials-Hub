@@ -1,0 +1,121 @@
+<div class="main">
+    <ng-container *ngIf="productData">
+        <div class="product">
+            <div class="image">
+                <img src="{{productData.productImage}}" class="img-1">
+                <img src="assets/veg-png.png" class="img-2" *ngIf="productData.productCategory=='Supplements' ">
+            </div>
+
+            <div class="details">
+                <div class="details-div">
+                    <p class="brand" routerLink="/brand/{{productData.productBrand}}">{{productData.productBrand}}</p>
+                    <p class="heading">{{productData.productBrand}} {{productData.productName}}</p>
+                    <div class="cost" *ngIf="!productData.productDiscount">
+                        <p>{{productData.productCost | currency:"INR" }}</p>
+                    </div>
+                    <div class="cost" *ngIf="productData.productDiscount">
+                        <p class="discountPrice">
+                            {{productData.productCost - productData.productCost * productData.productDiscount/100 |
+                            currency:"INR" }}</p>
+
+                        <p class="productCost" *ngIf="productData.productDiscount && productData.productDiscount>0">
+                            {{productData.productCost | currency:"INR" }}
+                        </p>
+                        <p class="discount" *ngIf="productData.productDiscount>0"> {{productData.productDiscount}}% off
+                        </p>
+                    </div>
+                    <div class="tax">(Incl. taxes<span *ngIf="productData.productCost>500">, Free delivery</span>)</div>
+                    <div class="Description">
+                        Net Weight : {{productData.productWeight}}
+                    </div>
+
+                    <div class="stock">
+                        <div class="dot"></div>In Stock
+                    </div>
+                    <div class="add-to-cart">
+                        <div class="quantity">
+                            <div class="button">
+                                <div (click)="handleQuantity('min')" class="btn-1">-</div>
+                                <input placeholder="{{productQuantity}}">
+                                <div (click)="handleQuantity('plus')" class="btn-1">+</div>
+                            </div>
+                        </div>
+                        <span *ngIf="maxQuantity" class="span-3">Max Quantity</span>
+
+                        <div>
+                            <button class="btn-2" (click)="AddToCart()" *ngIf="!removeCart"><fa-icon
+                                    [icon]="faCartShopping" class="icons"></fa-icon>ADD TO CART</button>
+
+                            <button class="btn-3" (click)="RemoveFromCart(productData._id)" *ngIf="removeCart"><fa-icon
+                                    [icon]="faTrash" class="icons"></fa-icon>REMOVE ITEM</button>
+                        </div>
+
+                    </div>
+
+                    <div class="policy">
+                        <div class="policy-1">
+                            <div class="circle"><fa-icon [icon]="faTruck" class="cross"></fa-icon></div>
+                            <p>Fast Delivery</p>
+                        </div>
+                        <div class="policy-1">
+                            <div class="circle"><fa-icon [icon]="faRotate" class="cross"></fa-icon></div>
+                            <p>Easy return & exchange</p>
+                        </div>
+                        <div class="policy-1">
+                            <div class="circle"><fa-icon [icon]="check" class="cross"></fa-icon></div>
+                            <p>Best quality products </p>
+                        </div>
+                        <div class="policy-1" *ngIf="productData.productCategory !=='Supplements' && 'Accessories'">
+                            <div class="circle"><fa-icon [icon]="faShield" class="cross"></fa-icon></div>
+                            <p>5 year warrenty</p>
+                        </div>
+                    </div>
+
+                    <div class="features">
+                        <div *ngIf="productData.productFeature" class="dtls" (click)="togglefn('features')">
+                            <p class="bold">Features <fa-icon [icon]="up" class="arrow"
+                                    *ngIf="show['features']"></fa-icon><fa-icon [icon]="down" class="arrow"
+                                    *ngIf="!show['features']"></fa-icon>
+                            </p>
+                            <p *ngIf="show['features']">{{productData.productFeature}}</p>
+                        </div>
+                        <div class="dtls" (click)="togglefn('description')">
+                            <p class="bold">Description <fa-icon [icon]="up" class="arrow"
+                                    *ngIf="show['description']"></fa-icon><fa-icon [icon]="down" class="arrow"
+                                    *ngIf="!show['description']"></fa-icon>
+                            </p>
+                            <p *ngIf="show['description']">{{productData.productDescription}}</p>
+                        </div>
+
+                        <div class="dtls" (click)="togglefn('info')">
+                            <p class="bold">Shipping Information <fa-icon [icon]="up" class="arrow"
+                                    *ngIf="show['info']"></fa-icon><fa-icon [icon]="down" class="arrow"
+                                    *ngIf="!show['info']"></fa-icon>
+                            </p>
+                            <div *ngIf="show['info']">
+                                <p>Pan India Free Shipping on orders above Rs 5,000.</p>
+                                <p>Nagpur:Free Shipping on all orders.</p>
+                                <p>For more read our T&c.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div  (mouseleave)="userLogged=false">
+                        <div class="wishlist" *ngIf="marked" (click)="addToWishlist(productData)"><fa-icon
+                                [icon]="heart"></fa-icon></div>
+                        <div *ngIf="userLogged" class="userLogged">Please login for
+                            wishlisting the product.<a routerLink="/login">Click here.</a></div>
+                        <div class="wishlist" *ngIf="!marked" (click)="removeToWishlist(productData._id)"><img
+                                src="assets/heart.png" class="heart"></div>
+                        <div class="trusted"><img class="logo" src="assets/shield.png">100% authentic</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <app-related-products></app-related-products>
+</div>
+
+<div class="gif-container" *ngIf="gif">
+    <img src="assets/loading.gif" alt="" class="gif">
+</div>

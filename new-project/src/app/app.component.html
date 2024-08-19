@@ -1,0 +1,10 @@
+<app-header *ngIf="!isLoginPage"></app-header>
+<div class="header" *ngIf="isLoginPage">
+    <div class="logo"><a routerLink="/"><img class="img1" src="assets/newlogo.jpg"></a></div>
+</div>
+
+<div class="router-outlet">
+    <router-outlet></router-outlet>
+</div>
+
+<app-footer *ngIf="!isLoginPage"></app-footer>

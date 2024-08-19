@@ -1,0 +1,33 @@
+<div class="container">
+    <div>
+        <p>Product List</p>
+        <table>
+            <thead class="table">
+                <tr>
+                    <th>Sr.No</th>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Image</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th class="action">Action</th>
+                </tr>
+            </thead>
+
+            <tbody *ngFor="let item of productList ; let i=index">
+                <tr>
+                    <td>{{i + 1}}.</td>
+                    <td>{{item.productName}}</td>
+                    <td>{{item.productBrand}}</td>
+                    <td><img src="{{item.productImage}}"></td>
+                    <td>{{item.productDescription}}</td>
+                    <td>{{item.productCost}}</td>
+                    <td>
+                        <fa-icon routerLink="/update-product/{{item._id}}" [icon]="edit" class="icons edit"></fa-icon>
+                        <fa-icon [icon]="trash" class="icons trash" (click)="openDialog(item._id)"></fa-icon>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

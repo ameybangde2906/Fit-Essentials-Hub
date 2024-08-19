@@ -1,0 +1,40 @@
+<div class="form" [ngClass]="{'blur-bg': isBlur}">
+    <div>
+        <form [formGroup]="loginForm" class="div">
+            <div class="login">
+                <div class="logo">
+                    <fa-icon [icon]="dumbbell" class="cross"></fa-icon>
+                </div>
+
+                <div class="select"><p class="p1">Admin's Login</p></div>
+                
+                <div class="input">
+                    <input formControlName="email" type="text" placeholder=" Email ">
+                    <span *ngIf="loginForm.hasError('required','email') && loginForm.controls['email'].dirty"
+                        class="required">*Email is required</span>
+                    <span *ngIf="loginForm.hasError('email','email')" class="required">*Email is invalid</span><br>
+                </div>
+
+                <div class="input">
+                    <input formControlName="password" type="password" placeholder=" Password">
+                    <span *ngIf="loginForm.hasError('required','password') && loginForm.controls['password'].dirty"
+                        class="required">*Password is required</span><br>
+                </div>
+                <span class="required" *ngIf="show">*Wrong email or password !</span><br>
+                <button [disabled]="loginForm.invalid" [class.disabled]="loginForm.invalid" (click)="login()">SIGN IN</button>
+                <div class="line">_______________________________________</div>
+
+                <div class="span">
+                    <p class="text"><a routerLink="/forget-password"> Forgot Password ?</a>
+                    </p>
+                    <p class="text"><a routerLink="/login">User Login ?</a>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="gif-container" *ngIf="gif">
+    <img src="assets/loading.gif" alt="" class="gif">
+</div>

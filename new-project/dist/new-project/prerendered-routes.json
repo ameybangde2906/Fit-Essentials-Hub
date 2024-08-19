@@ -1,0 +1,21 @@
+{
+  "routes": [
+    "/",
+    "/accounts",
+    "/add-products",
+    "/address",
+    "/address-info",
+    "/admin-accounts",
+    "/admin-login",
+    "/admin-profile",
+    "/best-seller",
+    "/cart",
+    "/forget-password",
+    "/login",
+    "/my-orders",
+    "/product-list",
+    "/profile-info",
+    "/registration",
+    "/wishlist"
+  ]
+}

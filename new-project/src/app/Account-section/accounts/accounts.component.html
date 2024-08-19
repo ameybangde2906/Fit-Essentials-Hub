@@ -1,0 +1,16 @@
+<div class="menu">
+    <div class="container">
+        <div class="colomn-1">
+            <div class="hello"><img src="assets/userImage.jpg">
+                <p class="name"> Hello {{userName|titlecase}}</p>
+            </div>
+            <div class="colomn-2">
+                <div class="profile" routerLink="/profile-info"><fa-icon [icon]="faUser" class="icons user"></fa-icon>Profile Information</div>
+                <div routerLink="/my-orders"><fa-icon [icon]="faBoxOpen" class="icons user"></fa-icon>My Orders</div>
+                <div routerLink="/wishlist"><fa-icon [icon]="faHeart" class="icons user"></fa-icon>Wishlist</div>
+                <div routerLink="/address-info"><fa-icon [icon]="faLocationDot" class="icons user"></fa-icon>Address</div>
+                <div (click)="logout()" ><fa-icon [icon]="faPowerOff" class="icons user"></fa-icon>Logout</div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,123 @@
+<div class="container">
+    <app-accounts></app-accounts>
+
+    <div class="container-2">
+        <h2>Manage Addresses</h2>
+        <div class="box-3" (click)="toggle()" *ngIf="hide">
+            <div><fa-icon [icon]="faPlus" class="icons user"></fa-icon><span>ADD A NEW ADDRESS</span></div>
+        </div>
+        <form [formGroup]="addressForm" class="addressForm" *ngIf="show">
+            <div class="head">
+                <div class="new-address" *ngIf="new">Add New Address</div>
+                <div class="new-address" *ngIf="renew">Update Address</div>
+            </div>
+
+            <div class="main">
+                <div class="flex">
+                    <div>
+                        <span class="span">First Name*</span>
+                        <input class="input" formControlName="firstName">
+                    </div>
+
+                    <div>
+                        <span class="span">Last Name*</span>
+                        <input class="input" formControlName="lastName">
+                    </div>
+                </div>
+                <div class="flex">
+                    <div>
+                        <span class="span">Phone*</span>
+                        <input class="input" formControlName="phone">
+                    </div>
+
+                    <div>
+                        <span class="span">Email*</span>
+                        <input class="input" formControlName="email">
+                    </div>
+                </div>
+                <div class="flex">
+                    <div>
+                        <span class="span">Address*(Area)</span>
+                        <input class="input" formControlName="address">
+                    </div>
+
+                    <div>
+                        <span class="span">Locality / Town*</span>
+                        <input class="input" formControlName="town">
+                    </div>
+                </div>
+                <div class="flex">
+                    <div>
+                        <p class="span">City / District*</p>
+                        <input class="input" formControlName="city">
+                    </div>
+
+                    <div>
+                        <p class="span">State*</p>
+                        <input class="input" formControlName="state">
+                    </div>
+                </div>
+                <div class="flex">
+                    <div>
+                        <span class="span">Country*</span>
+                        <select formControlName="country">
+                            <option value="India">India</option>
+                            <option value="China">China</option>
+                            <option value="United States of America">United States of America</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="Germany">Germany</option>
+                            <option value="Brazil">Brazil</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <span class="span">Pincode*</span>
+                        <input class="input" formControlName="pincode">
+                    </div>
+
+                </div>
+                <div class="radio-btn2">
+                    <p>Address Type</p>
+                    <div class="radio-btn2-div">
+                        <div> <input type="radio" formControlName="deliverAt" value="Home">Home ( All day delivery )
+                        </div>
+                        <div> <input type="radio" formControlName="deliverAt" value="work" class="btn-3">Work ( Delivery
+                            between 10AM - 5PM )</div>
+                    </div>
+                </div>
+                <button class="btn" (click)="addAddress()" *ngIf="new">ADD NEW ADDRESS</button>
+                <button class="btn" (click)="updateAddress(addByid._id)" *ngIf="renew">UPDATE ADDRESS</button>
+                <button class="btn-1" (click)="cancel()">CANCEL</button>
+            </div>
+        </form>
+        <div>
+            <div *ngFor=" let address of address; let i =index">
+
+                <div class="box" *ngIf="div">
+                    <div class="box-2">
+
+                        <span class="name">{{address.firstName | titlecase}} {{address.lastName | titlecase}}</span>
+                        <span class="deliverAt">{{address.deliverAt}}</span> <span class="phone">
+                            {{address.phone}}</span>
+
+                        <div class="address">
+                            <span>{{address.address | titlecase}}, {{address.town | titlecase}}, {{address.city |
+                                titlecase}},</span>
+                        </div>
+
+                        <div class="address-1"><span>{{address.state | titlecase}},</span> <span>{{address.country
+                                |titlecase }} - </span> <span class="pincode">{{address.pincode}}</span></div>
+                    </div>
+
+                    <div class="edit" (mouseleave)="showDots[i] = false">
+                        <fa-icon [icon]="threeDots" class="dots-icon" (click)="showDots[i] = true"></fa-icon>
+                        <div class="dots" *ngIf="showDots[i]" >
+                            <div class="edit-div" (click)="getById(address._id) ; showDots[i]=false">Edit</div>
+                            <div (click)="deleteAdd(address._id)">Delete</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

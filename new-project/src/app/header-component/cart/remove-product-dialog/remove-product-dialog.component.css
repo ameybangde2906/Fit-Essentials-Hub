@@ -1,0 +1,90 @@
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+.img {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.trash {
+    color: red;
+    font-size: 22px;
+}
+
+.circle {
+    border-radius: 50%;
+    background-color: rgb(255, 241, 241);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.heading {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-align: center;
+    gap: 10px;
+
+}
+
+.center {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(209, 209, 209);
+    border-top: 1px solid rgb(209, 209, 209);
+    height: 80px;
+}
+
+.center p {
+    margin-left: 30px;
+    margin-right: 15px;
+    color: rgb(32, 32, 32);
+    font-size: 13px;
+}
+
+.btn {
+    display: flex;
+    justify-content: right;
+    margin-top: 10px;
+}
+
+.btn-1 {
+    margin-right: 10px;
+    background-color:royalblue;
+    border: none;
+    color: white;
+    width: 120px;
+    height: 35px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-2 {
+    margin-right: 15px;
+    color:red;
+    border: 1px solid red;
+    width: 80px;
+    height: 35px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}

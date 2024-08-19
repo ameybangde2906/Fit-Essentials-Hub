@@ -1,0 +1,58 @@
+.container {
+    display: flex;
+    overflow-x: auto;
+    margin: 20px 20px 20px 3%;
+}
+
+.container::-webkit-scrollbar {
+    display: none;
+}
+p{
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    margin: 20px 20px;
+
+}
+img{
+    width: 90px;
+    height: 90px;
+}
+
+.table{
+    border-collapse: collapse;
+    border: 1px solid rgb(212, 212, 212);
+}
+.table th{
+    border-bottom: 1px solid  rgb(212, 212, 212);
+}
+.table tr{
+    border-bottom: 1px solid rgb(212, 212, 212);
+}
+.table th,table td{
+    border-bottom: 1px solid rgb(212, 212, 212);
+    padding: 4px 20px 8px 5px;
+    text-align: center;
+    max-width: 300px; /* Set a maximum width for cells */
+    overflow: hidden;
+    text-overflow: ellipsis; /*Add ellipsis for overflow text */
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+h3{
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.edit{
+    margin:25px
+}
+
+.icons:hover{
+    color: rgb(39, 175, 229);
+}
+
+
+app-update-product{
+    width:40%;
+}

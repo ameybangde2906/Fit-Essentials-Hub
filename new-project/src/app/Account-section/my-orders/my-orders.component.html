@@ -1,0 +1,44 @@
+<div class="container">
+    <app-accounts></app-accounts>
+    <div class="box-1">
+        <p class="heading">Order History</p>
+        <div *ngFor="let orderData of orderData">
+
+            <div class="box-2">
+                <p class="date"><strong>Ordered on : </strong> {{orderData.createdAt | date:'dd/MM/yyyy' }}</p>
+                <div *ngFor="let product of orderData.products" class="flex">
+
+                    <div class="img" routerLink="/details/{{product.productId}}/{{product.productType}}"><img [src]="product.productImage"
+                            alt="{{ product.productName}}"></div>
+                    <div class="flex-2">
+                        <div class="info" routerLink="/details/{{product.productId}}/{{product.productType}}">
+                            <p class="name" style="white-space:nowrap; overflow:hidden; text-overflow: ellipsis; max-width: 100ch;">{{ product.productBrand  | titlecase }} {{ product.productName  | titlecase }}</p>
+                            <p class="weight">Weight: {{product.productWeight}}</p>
+                        </div>
+                        <div *ngIf="product.productDiscount" class="cost">
+                            {{product.productCost - product.productCost *
+                            product.productDiscount/100 | currency:"INR" }}</div>
+
+                        <div *ngIf="!product.productDiscount" class="cost">
+                            {{product.productCost | currency:"INR"}}</div>
+
+                        <div class="process">In process</div>
+                    </div>
+
+                    <div class="btn"><button class="button-1">Track Order</button>
+                        <button class="button-2">Cancel Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-3" *ngIf="show">
+            <div class="no-order"><img src="assets/no-order.png"></div>
+            <div class="box-3-text">
+                <h2>No Purchase History</h2>
+                <p>Check back after your next shopping trip !</p>
+                <button routerLink="">Start Shopping</button>
+            </div>
+        </div>
+
+    </div>
+</div>
