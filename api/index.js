@@ -21,7 +21,7 @@ const __dirname = path.resolve();
 app.use(express.json()); 
 app.use(cookieParser());
 app.use(cors({
-    origin:'http://localhost:4200',
+    origin:'http://localhost:8000',
     credentials: true
 }))
 app.use("/api/role", roleRoute);
