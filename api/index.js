@@ -16,12 +16,11 @@ import cookieParser from 'cookie-parser';
 const app = express();
 const port = process.env.PORT || 8000
 dotenv.config();
-const __dirname = path.resolve();
 
 app.use(express.json()); 
 app.use(cookieParser());
 app.use(cors({
-    origin:'http://localhost:8000',
+    origin:'https://fit-essentials-hub-avwd.onrender.com',
     credentials: true
 }))
 app.use("/api/role", roleRoute);
@@ -44,17 +43,6 @@ app.use((err, req, res, next) => {
         obj: err.data
     });
 });
-
-if (process.env.NODE_ENV === 'production') {
-    // Serve static files from the Angular app's dist directory
-    app.use(express.static(path.join(__dirname, '/new-project/dist/new-project/browser')));
-
-    // Handle all other routes by sending the Angular app's index.html
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, '/new-project/dist/new-project/browser', 'index.html'));
-    });
-}
-
 
 //db connection
 const connectMongoDB = async () => {

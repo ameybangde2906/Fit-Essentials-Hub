@@ -1,3 +1,3 @@
 export const apiUrls={
-    apiConstant: 'http://localhost:8000/api/'
+    apiConstant: 'https://fit-essentials-hub-api.onrender.com/api/'
 }
