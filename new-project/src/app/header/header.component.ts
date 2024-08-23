@@ -46,13 +46,15 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
 
     let cartData = localStorage.getItem('cartProducts');
+    if(!cartData){
+      localStorage.setItem('cartProducts',JSON.stringify([]))
+    }
     if (cartData) {
       this.cartItems = JSON.parse(cartData).length
       this.localCart.cartData.subscribe((items) => {
         this.cartItems = items.length
         this.localCart.getCart()
         this.cartService.currentCart()
-
       })
     }
     this.cartService.cartData.subscribe((items) => {

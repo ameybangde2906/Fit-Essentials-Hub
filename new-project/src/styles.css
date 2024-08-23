@@ -8,3 +8,17 @@
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* For WebKit browsers like Chrome, Safari */
+::-webkit-scrollbar {
+    width: 3px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(129, 129, 129);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}

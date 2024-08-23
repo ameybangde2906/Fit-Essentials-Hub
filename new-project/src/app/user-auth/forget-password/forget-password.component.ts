@@ -23,8 +23,9 @@ export class ForgetPasswordComponent implements OnInit {
       email:['',Validators.compose([Validators.required, Validators.email])]
     })
   }
+  
   submit(){
-    this.authService.loginService(this.forgetForm.value)
+    this.authService.sendEmailService(this.forgetForm.value)
     .subscribe({
       next:(res)=>{
         this.forgetForm.reset();

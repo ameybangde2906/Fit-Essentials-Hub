@@ -3,7 +3,7 @@
         <form [formGroup]="loginForm" class="div">
             <div class="login">
                 <div class="logo">
-                    <fa-icon [icon]="dumbbell" class="cross"></fa-icon>
+                    <img src="assets/newlogo.jpg">
                 </div>
 
                 <div class="select"><p class="p1">Admin's Login</p></div>
@@ -25,9 +25,17 @@
                 <div class="line">_______________________________________</div>
 
                 <div class="span">
-                    <p class="text"><a routerLink="/forget-password"> Forgot Password ?</a>
+                    <p class="text">
+                        Forgot password ?
+                        <span >
+                            <a routerLink="/forget-password">Click here</a>
+                        </span>
                     </p>
-                    <p class="text"><a routerLink="/login">User Login ?</a>
+                    <p class="text">
+                        User login ?
+                        <span >
+                            <a routerLink="/login">Click here</a>
+                        </span>
                     </p>
                 </div>
             </div>

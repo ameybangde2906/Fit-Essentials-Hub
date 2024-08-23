@@ -6,35 +6,32 @@
 }
 
 .form {
-    padding-bottom: 40px;
-    background-color: rgb(241, 241, 241);
+    height: 100vh;
+    background-color: rgb(228, 228, 228);
     display: flex;
     justify-content: center;
-    background-image: url('/assets/login.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .div {
     margin-top: 60px;
     width: 410px;
-    min-height: 580px;
+    min-height: 560px;
     border-radius: 7px;
     background-color: white;
     color: black;
     border: 1px solid rgb(192, 192, 192);
 }
 
-.logo{
+.logo {
     margin-top: 20px;
     display: flex;
     justify-content: center;
 }
-
-.logo .cross{
-  font-size: 40px;
-  color: gray;
-}
+.logo img{
+    border: 1px solid rgb(207, 207, 207);
+    height: 35px;
+    width: 120px;
+} 
 
 .select{
     margin-top: 40px;
@@ -43,7 +40,7 @@
     margin-bottom: 20px;
 }
 .contain{
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 700;
     display: flex;
     justify-content: center;
@@ -84,12 +81,14 @@ input {
     height: 30px;
     margin-left: 30px;
     font-size: 13px;
-    border: none;
-    border-bottom: 1px solid rgb(175, 175, 175);
+    border-radius: 15px;
+    border: 1px solid rgb(175, 175, 175);
+    padding-left: 5px;
+    outline: none;
 }
 
 .required {
-    margin-left: 27px;
+    margin-left: 35px;
     font-size: 12px;
     color: rgb(255, 0, 0);
 }
@@ -97,15 +96,15 @@ input {
 button {
     width: 345px;
     height: 30px;
-    background-color: #ff3737;
+    background-color: rgb(92, 194, 92);
     color: white;
-    border-radius: 6px;
+    border-radius: 15px;
     margin-top: 10px;
     margin-left: 30px;
     margin-bottom: 25px;
 }
 button:hover {
-    background-color: #ff1818;
+    background-color:rgb(64, 170, 64);
 }
 
 .text {

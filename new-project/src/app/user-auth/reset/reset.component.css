@@ -5,13 +5,11 @@
    
 }
 .form{
-    height: 110vh;
-    background-color: rgb(241, 241, 241);
+    height: 100vh;
+    background-color: rgb(228, 228, 228);
     display: flex;
    justify-content: center;
    align-items: center;
-   margin-bottom: -60px;
-
 }
 
 .login{
@@ -50,28 +48,31 @@ input{
     width:350px;
     height: 30px;
     margin-left: 27px;
-    
     font-size: 13px;
-    border-radius: 5px ;
+    border-radius: 15px ;
     border: 1px solid rgb(175, 175, 175);
+    padding-left: 5px;
 }
 
 
 .required{
-    margin-left: 27px;
+    margin-left: 35px;
     font-size: 12px;
     color:  rgb(255, 0, 0);
 }
 
-button{
-    width:110px;
-    height: 35px;
-    background-color: rgb(31, 31, 31);
+button {
+    width: 345px;
+    height: 30px;
+    background-color: rgb(92, 194, 92);
     color: white;
-    border-radius: 6px;
-    margin-top: -10px;
-    margin-left: 27px;
+    border-radius: 15px;
+    margin-top: 10px;
+    margin-left: 30px;
     margin-bottom: 25px;
+}
+button:hover {
+    background-color:rgb(64, 170, 64);
 }
 
 .text{

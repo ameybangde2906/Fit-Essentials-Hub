@@ -26,6 +26,7 @@ export class CartService {
     }
     this.cartData.emit(cartData);
   }
+  
   removeItemFromCart(productId: string) {
     let cartData = localStorage.getItem('cartProducts');
     if (cartData) {
@@ -54,7 +55,6 @@ export class CartService {
   removeToCart(cartId: string) {
     return this.http.delete(`${apiUrls.apiConstant}cart/deleteid/${cartId}`)
   }
-
 
   currentCart(): Observable<cart[]> {
     let userStore = localStorage.getItem('user_id');

@@ -4,7 +4,7 @@
             <div class="login">
 
                 <div class="logo">
-                    <fa-icon [icon]="dumbbell" class="cross"></fa-icon>
+                    <img src="assets/newlogo.jpg">
                 </div>
 
                 <div class="select">
@@ -17,24 +17,36 @@
                     <input formControlName="email" type="text" placeholder=" Email">
                     <span *ngIf="loginForm.hasError('required','email') && loginForm.controls['email'].dirty"
                         class="required">*Email is required</span>
-                        <span *ngIf="loginForm.hasError('email','email')" class="required">*Email is invalid</span><br>
+                    <span *ngIf="loginForm.hasError('email','email')" class="required">*Email is invalid</span><br>
                 </div>
 
                 <div class="input">
                     <input formControlName="password" type="password" placeholder=" Password">
                     <span *ngIf="loginForm.hasError('required','password') && loginForm.controls['password'].dirty"
-                        class="required">*Password is required</span><br>
+                        class="required">*Password is required</span>
+                    <span class="required" *ngIf="show">*Wrong email or password !</span><br>
                 </div>
-                <span class="required" *ngIf="show">*Wrong email or password !</span><br>
+
 
                 <button [disabled]="loginForm.invalid" [class.disabled]="loginForm.invalid" (click)="login()">SIGN
                     IN</button>
+                <p class="text">Demo: email - hira&#64;gmail.com | Pass - 1234</p>
+
                 <div class="line">_______________________________________</div>
 
                 <div class="span">
-                    <p class="text"><a routerLink="/forget-password">Forgot Password ?</a>
+                    <p class="text">
+                        Forgot password ?
+                        <span>
+                            <a routerLink="/forget-password">Click here</a>
+                        </span>
                     </p>
-                    <p class="text"><a routerLink="/admin-login">Admin's Login ? </a>
+
+                    <p class="text">
+                        Admin's Login ?
+                        <span>
+                            <a routerLink="/admin-login">Click here </a>
+                        </span>
                     </p>
                 </div>
 

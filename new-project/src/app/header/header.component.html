@@ -1,4 +1,4 @@
-<div class="navbar" >
+<div class="navbar">
   <div class="header">
     <div class="logo"><a routerLink="/"><img class="img1" src="assets/newlogo.jpg"></a></div>
 
@@ -6,15 +6,16 @@
       <div class="search-input" #searchBar>
         <input type="text" #searchInput (keyup)="searchProduct($event)"
           (keydown.enter)="submitSearch(searchInput.value)"
-          placeholder=" Search gym equipements,accessories and suppliments...." >
-        <div (click)="submitSearch(searchInput.value)" class="mg"><fa-icon [icon]="faMagnifyingGlass" class="m-glass icons"></fa-icon></div>
+          placeholder=" Search gym equipements,accessories and suppliments....">
+        <div (click)="submitSearch(searchInput.value)" class="mg"><fa-icon [icon]="faMagnifyingGlass"
+            class="m-glass icons"></fa-icon></div>
       </div>
 
       <ul class="result" *ngIf="searchResult">
         <li *ngFor="let item of searchResult" (click)="productDetails(item._id,item.productType)">
-          <img src="{{item.productImage}}" >
-          <a
-            style="white-space:nowrap; overflow:hidden; text-overflow: ellipsis; max-width: 200ch;">{{item.productBrand}} {{item.productName}}</a>
+          <img src="{{item.productImage}}">
+          <a style="white-space:nowrap; overflow:hidden; text-overflow: ellipsis; max-width: 200ch;">{{item.productBrand}}
+            {{item.productName}}</a>
         </li>
         <li *ngIf="noResult" class="no-result"><a>No result found...</a></li>
       </ul>
@@ -69,8 +70,8 @@
     <div (click)="menu()"><fa-icon [icon]="faBars" class="menu"></fa-icon></div>
     <div class="logo"><a routerLink="/"><img class="img1" src="assets/newlogo.jpg"></a></div>
 
-    <div class="search-box" *ngIf="searchBox" >
-      <div class="inner-search-box" >
+    <div class="search-box" *ngIf="searchBox">
+      <div class="inner-search-box">
         <input type="text" #searchInput (keyup)="searchProduct($event)"
           (keydown.enter)="submitSearch(searchInput.value)" (blur)="hideSearch()"
           placeholder=" Search gym equipements,accessories and suppliments....">
@@ -80,7 +81,7 @@
       </div>
       <fa-icon [icon]="cross" (click)="search()"></fa-icon>
     </div>
-    <ul class="search-result" *ngIf="searchResult" >
+    <ul class="search-result" *ngIf="searchResult">
       <li *ngFor="let item of searchResult">
         <img src="{{item.productImage}}" (click)="productDetails(item._id,item.productType)">
         <a
@@ -122,19 +123,16 @@
     </div>
 
   </div>
-  
-<div (mouseleave)="menu()" >
-  <div class="sideBar-items" *ngIf="menuBar" >
-    <a><fa-icon [icon]="cross" (click)="menu()" class="cross"></fa-icon></a>
-    <a routerLink="/category/Weights and Barbells" (click)="menu()">WEIGHTS AND BARBELLS</a>
-    <a routerLink="/category/Machines" (click)="menu()">MACHINES</a>
-    <a routerLink="/category/Cardio" (click)="menu()">CARDIO</a>
-    <a routerLink="/category/Benches, Racks and Grips" (click)="menu()">BENCHES,RACKS AND GRIPS</a>
-    <a routerLink="/category/Accessories" (click)="menu()">ACCESSORIES</a>
-    <a routerLink="/category/Supplements" (click)="menu()">SUPPLEMENTS </a>
+
+  <div (mouseleave)="menu()">
+    <div class="sideBar-items" *ngIf="menuBar">
+          <fa-icon [icon]="cross" (click)="menu()" class="cross"></fa-icon>
+      <a routerLink="/category/Weights and Barbells" (click)="menu()">WEIGHTS AND BARBELLS</a>
+      <a routerLink="/category/Machines" (click)="menu()">MACHINES</a>
+      <a routerLink="/category/Cardio" (click)="menu()">CARDIO</a>
+      <a routerLink="/category/Benches, Racks and Grips" (click)="menu()">BENCHES,RACKS AND GRIPS</a>
+      <a routerLink="/category/Accessories" (click)="menu()">ACCESSORIES</a>
+      <a routerLink="/category/Supplements" (click)="menu()">SUPPLEMENTS </a>
+    </div>
   </div>
 </div>
-</div>
-
-
-

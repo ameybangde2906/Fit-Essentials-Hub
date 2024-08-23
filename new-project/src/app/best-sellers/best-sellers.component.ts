@@ -48,8 +48,8 @@ export class BestSellersComponent {
   }
   
    viewAll() {
-    this.router.navigate(['best-seller'])
     window.scrollTo({top:0, behavior:"auto"})
+    this.router.navigate(['best-seller'])
   }
 
   slideLeft() {

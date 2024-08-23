@@ -1,8 +1,9 @@
 .main{
     border-bottom: 6px solid rgb(239, 239, 239);
+    position: relative;
 }
 .heading {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     text-align: center;
     margin-top: 40px;
@@ -26,7 +27,7 @@
 .categories a{
     margin: 20px 40px 20px 40px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     color: gray;
 }
@@ -34,6 +35,7 @@
 .container {
     display: flex;
     transition: transform 0.5s ease;
+    min-height: 150px;
 }
 .image-slider::-webkit-scrollbar{
     display: none;
@@ -128,12 +130,12 @@ ng-container{
     text-align: center;
     cursor: pointer;
     color: rgb(20, 135, 159);
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .shopAll .icons{
     color: rgb(147, 147, 147);
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
 }
 .button-1{
@@ -162,6 +164,10 @@ ng-container{
     justify-content: center;
     align-items: center;
     padding-bottom: 40px;
+    position: absolute;
+    z-index: 10;
+    top: 40%;
+    left: 50%;
 }
 .gif{
     width: 30px;
@@ -177,14 +183,10 @@ ng-container{
 }
 @media(max-width:1000px){
     .categories{
-        justify-content: space-between;
+        justify-content: space-around;
     }
     .categories a {
         margin: 10px 20px 20px 20px;
-        cursor: pointer;
-        font-size: 14px;
-        font-weight: 700;
-        color: gray;
     }
     .container {
         max-width: 100%;
@@ -233,11 +235,6 @@ ng-container{
         font-size: 13px;
         font-weight: 700;
     }
-    .shopAll .icons{
-        color: rgb(167, 167, 167);
-        font-size: 15px;
-        font-weight: bolder;
-    }
     
 }
 
@@ -251,10 +248,6 @@ ng-container{
     }
     .categories a {
         margin: 10px 10px 20px 10px;
-        cursor: pointer;
-        font-size: 14px;
-        font-weight: 700;
-        color: gray;
     }
 }
 @media(max-width:550px) {
@@ -262,7 +255,7 @@ ng-container{
     .categories a {
         margin: 10px 7px 20px 7px;
         cursor: pointer;
-        font-size: 13px;
+        font-size: 11px;
         font-weight: 700;
         color: gray;
     }
@@ -305,11 +298,6 @@ ng-container{
         height: 30%;
         padding: 0;
     }
-    .shopAll .icons{
-        color: rgb(167, 167, 167);
-        font-size: 15px;
-        font-weight: bolder;
-    }
     .price{
         margin-top: -8px;
     }
@@ -323,7 +311,7 @@ ng-container{
     .categories a {
         margin: 10px 6px 20px 6px;
         cursor: pointer;
-        font-size: 11px;
+        font-size: 10px;
         font-weight: 700;
         color: gray;
     }

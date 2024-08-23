@@ -17,26 +17,24 @@ export class TopDealsProductsComponent {
   constructor(private getallproducts:GetAllProductsService , private activatedroute:ActivatedRoute){}
 
   ngOnInit(){
+    window.scrollTo({top:0,behavior:"auto"})
     this.show=true
     let productType= this.activatedroute.snapshot.paramMap.get('key')
     productType && this.getallproducts.getProductsByType(productType).subscribe((res)=>{
       this.productList=res
       this.show=false
-      window.scrollTo({top:0,behavior:"auto"})
     })
 
     let productBrand=this.activatedroute.snapshot.paramMap.get('brand')
     productBrand && this.getallproducts.getProductsByBrand(productBrand).subscribe((res)=>{
       this.productList=res
       this.show=false
-      window.scrollTo({top:0,behavior:"auto"})
     })
     
     let category=this.activatedroute.snapshot.paramMap.get('category')
     category && this.getallproducts.getSuppDiscount(category).subscribe((res)=>{
       this.productList=res
       this.show=false
-      window.scrollTo({top:0,behavior:"auto"})
     })
   }
 

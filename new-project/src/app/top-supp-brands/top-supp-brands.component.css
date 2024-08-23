@@ -4,7 +4,7 @@
     padding: 20px 0 20px 0;
 }
 .heading {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     text-align: center;
     padding: 20px 20px;
@@ -39,6 +39,7 @@
     text-align: center;
     color: rgb(79, 79, 79);
     margin-top: 7px;
+    font-size: 13px;
 }
 .flex:hover p{
     color: rgb(0, 153, 255);

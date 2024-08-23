@@ -60,6 +60,7 @@ export class ProductDetailsComponent {
 
   ngOnInit(): void {
     this.gif=true
+    window.scrollTo({top:0, behavior:"auto"})
     this.activatedRoute.params.subscribe(params => {
       const productId = params['id'];
 
@@ -67,7 +68,6 @@ export class ProductDetailsComponent {
         .subscribe(res => {
           this.productData = res;
           this.gif=false
-          window.scrollTo({top:0, behavior:"auto"})
           let cartData = localStorage.getItem('cartProducts');
           if (productId && cartData) {
             let items = JSON.parse(cartData);

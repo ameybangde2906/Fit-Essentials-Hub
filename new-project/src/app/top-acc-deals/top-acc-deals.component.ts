@@ -46,6 +46,7 @@ export class TopAccDealsComponent {
     })
   }
   viewAll(){
+    window.scrollTo({top:0, behavior:"auto"})
     this.router.navigate([ `${this.selectedTagIndex}`]);
   }
 

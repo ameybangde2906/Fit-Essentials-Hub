@@ -13,10 +13,10 @@ export class LocalCartService {
 
   constructor() { }
 
-  // getCartData(): any | undefined[] {
-  //   const cartData = localStorage.getItem(this.cartKey);
-  //   return cartData ? JSON.parse(cartData) : [];
-  // }
+  getCartData(): any | undefined[] {
+    const cartData = localStorage.getItem(this.cartKey);
+    return cartData ? JSON.parse(cartData) : [];
+  }
 
   removeItemFromCart(itemId: string): void {
     let cartData = localStorage.getItem('cartProducts');

@@ -2,10 +2,11 @@
     <p class="heading">You May Also Like</p>
     <div class="container">
         <div class="card" *ngFor="let item of relatedProducts"  (click)="select(item._id,item.productType)">
+            <div class="badge" *ngIf="item.productDiscount>0 ">
+                <div class="discount">{{item.productDiscount}}% OFF</div>
+            </div>
             <div class="image">
-                <div class="badge" *ngIf="item.productDiscount>0 ">
-                    <div class="discount">{{item.productDiscount}}% OFF</div>
-                </div>
+
                 <img src="{{item.productImage}}">
             </div>
             <div class="info">

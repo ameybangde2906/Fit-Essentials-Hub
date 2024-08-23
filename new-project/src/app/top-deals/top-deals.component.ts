@@ -17,6 +17,5 @@ export class TopDealsComponent {
   products: any
   faIndianRupeeSign=faIndianRupeeSign
 
-  constructor(private getAllproducts: GetAllProductsService) { }
 
 }

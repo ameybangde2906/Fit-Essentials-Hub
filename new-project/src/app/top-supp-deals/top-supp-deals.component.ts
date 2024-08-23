@@ -48,8 +48,8 @@ export class TopSuppDealsComponent {
   }
 
   viewAll(){
-    this.router.navigate([ `${this.selectedTagIndex}`]);
     window.scrollTo({top:0, behavior:"auto"})
+    this.router.navigate([ `${this.selectedTagIndex}`]);
   }
 
   slideLeft() {
